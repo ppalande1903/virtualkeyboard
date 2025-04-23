@@ -1,0 +1,207 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 330 100% 98%;
+    --foreground: 330 50% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 330 50% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 330 50% 15%;
+    --primary: 330 90% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 80% 96%;
+    --secondary-foreground: 330 50% 40%;
+    --muted: 330 50% 96%;
+    --muted-foreground: 330 30% 40%;
+    --accent: 330 80% 96%;
+    --accent-foreground: 330 50% 40%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 330 60% 90%;
+    --input: 330 60% 90%;
+    --ring: 330 90% 65%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 330 50% 8%;
+    --foreground: 330 20% 98%;
+    --card: 330 50% 10%;
+    --card-foreground: 330 20% 98%;
+    --popover: 330 50% 10%;
+    --popover-foreground: 330 20% 98%;
+    --primary: 330 90% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 330 50% 15%;
+    --secondary-foreground: 330 20% 98%;
+    --muted: 330 50% 15%;
+    --muted-foreground: 330 40% 70%;
+    --accent: 330 50% 15%;
+    --accent-foreground: 330 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 330 20% 98%;
+    --border: 330 50% 20%;
+    --input: 330 50% 20%;
+    --ring: 330 90% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-400;
+}
+
+.pink-glow {
+  text-shadow: 0 0 10px rgba(255, 105, 180, 0.5), 0 0 20px rgba(255, 105, 180, 0.3);
+}
+
+.card-hover {
+  transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px -5px rgba(255, 105, 180, 0.4);
+}
+
+.floating {
+  animation: floating 3s ease-in-out infinite;
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.hero-gradient {
+  background: radial-gradient(circle at center, rgba(255, 105, 180, 0.2) 0%, rgba(255, 255, 255, 0) 70%);
+}
+
+.sparkle {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: sparkle-animation 2s linear infinite;
+}
+
+@keyframes sparkle-animation {
+  0% {
+    transform: scale(0) rotate(0deg);
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+.animate-in {
+  animation: animate-in 0.5s ease-out forwards;
+}
+
+@keyframes animate-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.staggered-animation > * {
+  opacity: 0;
+  animation: staggered-fade-in 0.5s ease-out forwards;
+}
+
+.staggered-animation > *:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.staggered-animation > *:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.staggered-animation > *:nth-child(3) {
+  animation-delay: 0.3s;
+}
+.staggered-animation > *:nth-child(4) {
+  animation-delay: 0.4s;
+}
+.staggered-animation > *:nth-child(5) {
+  animation-delay: 0.5s;
+}
+.staggered-animation > *:nth-child(6) {
+  animation-delay: 0.6s;
+}
+.staggered-animation > *:nth-child(7) {
+  animation-delay: 0.7s;
+}
+.staggered-animation > *:nth-child(8) {
+  animation-delay: 0.8s;
+}
+
+@keyframes staggered-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
