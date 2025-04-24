@@ -422,16 +422,13 @@ export default function Home() {
                   Watch Demo Video
                 </Button>
               </div>
-              <div className="mt-8 flex items-center justify-center gap-2">
-                <div className="flex -space-x-2">
-                  <div className="w-8 h-8 rounded-full bg-pink-300 border-2 border-white dark:border-pink-950"></div>
-                  <div className="w-8 h-8 rounded-full bg-purple-300 border-2 border-white dark:border-pink-950"></div>
-                  <div className="w-8 h-8 rounded-full bg-pink-400 border-2 border-white dark:border-pink-950"></div>
-                  <div className="w-8 h-8 rounded-full bg-purple-400 border-2 border-white dark:border-pink-950"></div>
-                </div>
-                <p className="text-sm text-muted-foreground">
-                  Joined by <span className="font-bold text-pink-500">2,000+</span> happy users
-                </p>
+              <div className="mt-6 flex items-center justify-center gap-2">
+                <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
+                <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
+                <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
+                <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
+                <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
+                <span className="text-sm font-medium">5.0 Rating</span>
               </div>
               <div className="mt-6 flex items-center justify-center gap-2">
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
@@ -439,7 +436,7 @@ export default function Home() {
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
-                <span className="text-sm font-medium">
+                <span className="text-sm font-medium">5.0 Rating</span>
               </div>
             </div>
           </AnimatedSection>
