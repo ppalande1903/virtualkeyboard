@@ -76,7 +76,7 @@ export default function Header() {
             asChild
             className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white shadow-lg shadow-pink-500/30 hover:shadow-pink-500/50 transition-all duration-300"
           >
-            <Link href="/get-started">Get Started</Link>
+            <Link href="/demo">Try Demo</Link>
           </Button>
         </motion.nav>
 
@@ -131,8 +131,8 @@ export default function Header() {
               asChild
               className="w-full bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white"
             >
-              <Link href="/get-started" onClick={() => setIsMenuOpen(false)}>
-                Get Started
+              <Link href="/demo" onClick={() => setIsMenuOpen(false)}>
+                Try Demo
               </Link>
             </Button>
           </nav>
