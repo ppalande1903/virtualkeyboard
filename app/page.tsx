@@ -118,11 +118,7 @@ export default function Home() {
                   <WebcamFeed isActive={isWebcamOn} />
                   <div className="absolute inset-0 bg-gradient-to-t from-pink-500/20 to-transparent"></div>
                   <div className="absolute bottom-4 left-4 right-4 text-white text-center p-2 rounded-lg bg-pink-500/70 backdrop-blur-sm">
-                    <p className="font-medium">
-                      {isWebcamOn
-                        ? "Look left or right to see eye tracking in action!"
-                        : 'Try typing "hello world" to see dynamic word suggestions!'}
-                    </p>
+                    <p className="font-medium">Try typing "hello world" to see dynamic word suggestions!</p>
                   </div>
                 </div>
                 <div className="absolute -top-4 -right-4 bg-pink-500 text-white px-3 py-1 rounded-full text-xs font-bold shadow-lg shadow-pink-500/30">
@@ -198,9 +194,7 @@ export default function Home() {
                 <div className="relative w-full h-full">
                   <div className="absolute inset-0 rounded-full bg-gradient-to-r from-pink-400 to-purple-400 opacity-70 blur-md"></div>
                   <div
-                    className={`absolute inset-2 rounded-full ${
-                      isWebcamOn ? "bg-pink-500 dark:bg-pink-600" : "bg-white dark:bg-pink-950"
-                    } flex items-center justify-center cursor-pointer transition-colors duration-300`}
+                    className={`absolute inset-2 rounded-full ${isWebcamOn ? "bg-pink-500 dark:bg-pink-600" : "bg-white dark:bg-pink-950"} flex items-center justify-center cursor-pointer transition-colors duration-300`}
                     onClick={() => setIsWebcamOn((prev) => !prev)}
                     role="button"
                     aria-label={isWebcamOn ? "Turn webcam off" : "Turn webcam on"}
@@ -445,7 +439,7 @@ export default function Home() {
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
                 <Star className="h-5 w-5 text-pink-500 fill-pink-500" />
-                <span className="text-sm font-medium">5.0 from 200+ reviews</span>
+                <span className="text-sm font-medium">
               </div>
             </div>
           </AnimatedSection>
@@ -515,13 +509,9 @@ function WebcamFeed({ isActive = false }) {
   const videoRef = useRef(null)
   const [isLoading, setIsLoading] = useState(true)
   const [hasError, setHasError] = useState(false)
-  const [eyePosition, setEyePosition] = useState(null)
-  const [eyeDirection, setEyeDirection] = useState("Center")
-  const [lastDirectionChange, setLastDirectionChange] = useState(Date.now())
 
   useEffect(() => {
     let stream = null
-    let detectionInterval = null
 
     async function setupWebcam() {
       if (!isActive) {
@@ -530,7 +520,6 @@ function WebcamFeed({ isActive = false }) {
           tracks.forEach((track) => track.stop())
           videoRef.current.srcObject = null
         }
-        setEyePosition(null)
         return
       }
 
@@ -551,26 +540,6 @@ function WebcamFeed({ isActive = false }) {
             setIsLoading(false)
           }
         }
-
-        // Set up simulated eye tracking when webcam is active
-        detectionInterval = setInterval(() => {
-          const now = Date.now()
-          // Change direction occasionally (every 1-3 seconds)
-          if (now - lastDirectionChange > Math.random() * 2000 + 1000) {
-            const directions = ["Left", "Center", "Right"]
-            const newDirection = directions[Math.floor(Math.random() * directions.length)]
-            setEyeDirection(newDirection)
-            setLastDirectionChange(now)
-
-            // Update eye position based on direction
-            const baseX = 50 // center position
-            const xOffset = newDirection === "Left" ? -20 : newDirection === "Right" ? 20 : 0
-            setEyePosition({
-              x: baseX + xOffset,
-              y: 30 + Math.random() * 40,
-            })
-          }
-        }, 300)
       } catch (err) {
         console.error("Error accessing webcam:", err)
         setHasError(true)
@@ -585,11 +554,8 @@ function WebcamFeed({ isActive = false }) {
       if (stream) {
         stream.getTracks().forEach((track) => track.stop())
       }
-      if (detectionInterval) {
-        clearInterval(detectionInterval)
-      }
     }
-  }, [isActive, lastDirectionChange])
+  }, [isActive])
 
   return (
     <div className="aspect-video bg-gradient-to-br from-pink-900 to-purple-900 rounded-lg w-full">
@@ -624,28 +590,8 @@ function WebcamFeed({ isActive = false }) {
         autoPlay
         playsInline
         muted
-        className={`rounded-lg w-full h-full object-cover ${
-          !isActive || isLoading || hasError ? "opacity-0" : "opacity-100"
-        }`}
+        className={`rounded-lg w-full h-full object-cover ${!isActive || isLoading || hasError ? "opacity-0" : "opacity-100"}`}
       />
-
-      {/* Eye detection indicators */}
-      {isActive && eyePosition && (
-        <>
-          <div
-            className="absolute w-10 h-10 border-2 border-pink-500 rounded-full z-10"
-            style={{
-              left: `${eyePosition.x}%`,
-              top: `${eyePosition.y}%`,
-              transform: "translate(-50%, -50%)",
-              boxShadow: "0 0 10px rgba(255, 105, 180, 0.6)",
-            }}
-          ></div>
-          <div className="absolute bottom-16 left-4 right-4 text-white text-center p-2 rounded-lg bg-pink-500/70 backdrop-blur-sm">
-            <p className="font-medium">Eye Direction: {eyeDirection}</p>
-          </div>
-        </>
-      )}
     </div>
   )
 }
