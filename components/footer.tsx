@@ -25,7 +25,10 @@ export default function Footer() {
                 <Instagram className="h-5 w-5" />
                 <span className="sr-only">Instagram</span>
               </Link>
-              <Link href="#" className="text-pink-400 hover:text-pink-500 transition-colors">
+              <Link
+                href="https://github.com/ppalande1903/virtual_key-ca.git"
+                className="text-pink-400 hover:text-pink-500 transition-colors"
+              >
                 <Github className="h-5 w-5" />
                 <span className="sr-only">GitHub</span>
               </Link>
@@ -36,7 +39,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-pink-600 dark:text-pink-400">Product</h3>
+            <h3 className="text-sm font-bold text-pink-600 dark:text-pink-400">Galactic typist</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/features" className="text-muted-foreground hover:text-pink-500 transition-colors">
@@ -83,30 +86,38 @@ export default function Footer() {
                   Support
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="https://drive.google.com/drive/folders/11HNMnungs4aIJ-DUWwvCv4h4yqxUgmWT?usp=sharing"
+                  className="text-muted-foreground hover:text-pink-500 transition-colors"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Google Drive
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h3 className="text-sm font-bold text-pink-600 dark:text-pink-400">Company</h3>
+            <h3 className="text-sm font-bold text-pink-600 dark:text-pink-400">GROUP MEMBERS:</h3>
             <ul className="space-y-2 text-sm">
               <li>
                 <Link href="/about" className="text-muted-foreground hover:text-pink-500 transition-colors">
-                  About
+                  PRACHITI
                 </Link>
               </li>
               <li>
                 <Link href="/careers" className="text-muted-foreground hover:text-pink-500 transition-colors">
-                  Careers
+                  PRIYADARSHINI
                 </Link>
               </li>
               <li>
                 <Link href="/contact" className="text-muted-foreground hover:text-pink-500 transition-colors">
-                  Contact
+                  MUKTA
                 </Link>
               </li>
               <li>
-                <Link href="/privacy" className="text-muted-foreground hover:text-pink-500 transition-colors">
-                  Privacy
-                </Link>
+                <Link href="/privacy" className="text-muted-foreground hover:text-pink-500 transition-colors"></Link>
               </li>
             </ul>
           </div>
